@@ -2,6 +2,10 @@ import { RFValue, RFPercentage } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 import { FontAwesome5 } from '@expo/vector-icons'
 
+interface TransactionProps {
+  type: 'positive' | 'negative';
+}
+
 export const Container = styled.View`
   border-radius: 5px;
   background-color: ${({ theme }) => theme.colors.shape};
@@ -16,10 +20,13 @@ export const Title = styled.Text`
   color: ${({ theme }) => theme.colors.text_dark}
 `;
 
-export const Amount = styled.Text`
+export const Amount = styled.Text<TransactionProps>`
   font-size: ${RFValue(20)}px;
   font-family: ${({ theme }) => theme.fonts.regular};
-  color: ${({ theme }) => theme.colors.success};
+  color: ${({ theme, type }) =>
+    type === 'positive' ? theme.colors.success : theme.colors.attention};
+
+
   margin-top: 2px;
 `;
 
