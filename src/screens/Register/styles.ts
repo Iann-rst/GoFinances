@@ -38,4 +38,5 @@ export const TransactionType = styled.View`
   justify-content: space-between;
 
   margin-top: 8px;
+  margin-bottom: 16px;
 `;
