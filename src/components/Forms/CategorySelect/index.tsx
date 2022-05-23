@@ -1,3 +1,4 @@
+//Componente CategorySelect - selecionar a categoria da transação
 import React from 'react';
 
 import {
