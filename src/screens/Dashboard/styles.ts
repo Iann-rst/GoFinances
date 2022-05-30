@@ -1,9 +1,11 @@
 import styled from "styled-components/native";
-import { FlatList, FlatListProps } from 'react-native';
+import { FlatList, FlatListProps, TouchableOpacity } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
 import { getBottomSpace, getStatusBarHeight } from 'react-native-iphone-x-helper';
 import { DataListProps } from '.';
+
+import { BorderlessButton } from "react-native-gesture-handler";
 
 export const Container = styled.View`
   flex: 1;
@@ -98,4 +100,6 @@ export const TransactionList = styled(
   contentContainerStyle: {
     paddingBottom: getBottomSpace()
   }
-})``; 
+})``;
+
+export const LogoutButton = styled(TouchableOpacity)``;

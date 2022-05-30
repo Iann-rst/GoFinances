@@ -1,4 +1,5 @@
 import React from 'react';
+import { Alert } from 'react-native';
 import { Card } from '../../components/Card';
 import { TransactionCard, TransactionCardProps } from '../../components/TransactionCard';
 
@@ -15,7 +16,8 @@ import {
   Cards,
   Transactions,
   Title,
-  TransactionList
+  TransactionList,
+  LogoutButton
 } from './styles';
 
 export interface DataListProps extends TransactionCardProps {
@@ -23,6 +25,9 @@ export interface DataListProps extends TransactionCardProps {
 }
 
 export function Dashboard() {
+  function Logout() {
+    Alert.alert("Logout!!");
+  }
   const data: DataListProps[] = [
     {
       id: '1',
@@ -70,7 +75,9 @@ export function Dashboard() {
               <UserName>Iann</UserName>
             </User>
           </UserInfo>
-          <Icon name="power-off" />
+          <LogoutButton onPress={Logout}>
+            <Icon name="power-off" />
+          </LogoutButton>
         </UserWrapper>
       </Header>
 
