@@ -1,7 +1,8 @@
 import React from 'react';
 import * as SplashScreen from 'expo-splash-screen';
 import { ThemeProvider } from 'styled-components';
-
+import 'intl';
+import 'intl/locale-data/jsonp/pt-BR';
 
 import theme from './src/global/styles/theme';
 import { AppRoutes } from './src/routes/app.routes';
