@@ -49,7 +49,7 @@ export function Dashboard() {
   const [highlightData, setHighlightData] = useState<HighlightData>({} as HighlightData);
 
   const theme = useTheme();
-  const { signOut } = useAuth();
+  const { signOut, user } = useAuth();
 
   //Função para pegar o dia da ultima transação de entrada e saída
   function getLastTransactionDate(collection: DataListProps[], type: 'positive' | 'negative') {
@@ -174,10 +174,10 @@ export function Dashboard() {
             <Header>
               <UserWrapper>
                 <UserInfo>
-                  <Photo source={{ uri: 'https://avatars.githubusercontent.com/u/48128325?v=4' }} />
+                  <Photo source={{ uri: user.photo }} />
                   <User>
                     <UserGreeting>Olá,</UserGreeting>
-                    <UserName>Iann</UserName>
+                    <UserName>{user.name}</UserName>
                   </User>
                 </UserInfo>
                 <LogoutButton onPress={signOut}>
