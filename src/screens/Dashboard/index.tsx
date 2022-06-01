@@ -4,6 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { useFocusEffect } from '@react-navigation/native';
 import { useTheme } from 'styled-components';
+import { useAuth } from '../../hooks/auth';
 
 import { Card } from '../../components/Card';
 import { TransactionCard, TransactionCardProps } from '../../components/TransactionCard';
@@ -27,6 +28,7 @@ import {
   LoadContainer
 } from './styles';
 
+
 export interface DataListProps extends TransactionCardProps {
   id: string;
 }
@@ -47,6 +49,7 @@ export function Dashboard() {
   const [highlightData, setHighlightData] = useState<HighlightData>({} as HighlightData);
 
   const theme = useTheme();
+  const { signOut } = useAuth();
 
   //Função para pegar o dia da ultima transação de entrada e saída
   function getLastTransactionDate(collection: DataListProps[], type: 'positive' | 'negative') {
@@ -177,7 +180,7 @@ export function Dashboard() {
                     <UserName>Iann</UserName>
                   </User>
                 </UserInfo>
-                <LogoutButton onPress={Logout}>
+                <LogoutButton onPress={signOut}>
                   <Icon name="power-off" />
                 </LogoutButton>
               </UserWrapper>
