@@ -58,7 +58,7 @@ function AuthProvider({ children }: AuthProviderProps) {
         const userLogged = {
           id: userInfo.id,
           email: userInfo.email,
-          name: userInfo.given_name,
+          name: userInfo.name,
           photo: userInfo.picture
         }
         setUser(userLogged);
