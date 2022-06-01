@@ -6,9 +6,11 @@ import 'intl';
 import 'intl/locale-data/jsonp/pt-BR';
 
 import theme from './src/global/styles/theme';
-import { AppRoutes } from './src/routes/app.routes';
 
-import { NavigationContainer } from '@react-navigation/native';
+import { AppRoutes } from './src/routes/app.routes';
+import { SignIn } from './src/screens/SignIn';
+import { AuthProvider, useAuth } from './src/hooks/auth';
+import { Routes } from './src/routes';
 
 import {
   useFonts,
@@ -16,6 +18,9 @@ import {
   Poppins_500Medium,
   Poppins_700Bold
 } from '@expo-google-fonts/poppins';
+
+import { LogBox } from "react-native";
+LogBox.ignoreLogs(["EventEmitter.removeListener"]);
 
 export default function App() {
   SplashScreen.preventAutoHideAsync();
@@ -25,7 +30,9 @@ export default function App() {
     Poppins_700Bold
   });
 
-  if (!fontsLoaded) {
+  const { userStorageLoading } = useAuth();
+
+  if (!fontsLoaded || userStorageLoading) {
     return null;
   }
 
@@ -33,10 +40,10 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <NavigationContainer>
-        <StatusBar barStyle="light-content" />
-        <AppRoutes />
-      </NavigationContainer>
+      <StatusBar barStyle="light-content" />
+      <AuthProvider>
+        <Routes />
+      </AuthProvider>
     </ThemeProvider>
   )
 }
