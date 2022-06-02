@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ActivityIndicator, Alert } from 'react-native';
+import { ActivityIndicator, Alert, Platform } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { useTheme } from 'styled-components';
 
@@ -34,17 +34,17 @@ export function SignIn() {
     } catch (e) {
       console.log(e);
       Alert.alert('Não foi possível conectar a conta Google');
-    } finally {
       setIsLoading(false);
     }
   }
 
   async function handleSignInWithApple() {
     try {
-      await signInWithApple();
+      return await signInWithApple();
     } catch (e) {
       console.log(e);
       Alert.alert('Não foi possível conectar a conta da Apple');
+      setIsLoading(false);
     }
   }
 
@@ -77,11 +77,14 @@ export function SignIn() {
             onPress={handleSignInWithGoogle}
           />
 
-          <SignInSocialButton
-            title="Entrar com Apple"
-            svg={AppleSvg}
-            onPress={handleSignInWithApple}
-          />
+          {
+            //Mostrar o botão "Entrar com Apple" apenas se estiver no ios
+            Platform.OS === 'ios' &&
+            <SignInSocialButton
+              title="Entrar com Apple"
+              svg={AppleSvg}
+              onPress={handleSignInWithApple}
+            />}
         </FooterWrapper>
 
         {isLoading && <ActivityIndicator color={theme.colors.shape} style={{ marginTop: 18 }} />}
