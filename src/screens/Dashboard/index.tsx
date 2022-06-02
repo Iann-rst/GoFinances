@@ -64,7 +64,7 @@ export function Dashboard() {
 
   //Função para buscar as transações no asyncStorage
   async function loadTransactions() {
-    const dataKey = '@gofinances:transactions';
+    const dataKey = `@gofinances:transactions_user:${user.id}`;
     const response = await AsyncStorage.getItem(dataKey);
     const transactions = response ? JSON.parse(response) : [];
 

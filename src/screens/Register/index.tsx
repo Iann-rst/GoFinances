@@ -13,6 +13,9 @@ import uuid from 'react-native-uuid';
 
 import { useForm } from 'react-hook-form';
 import { useNavigation, NavigationProp, ParamListBase } from '@react-navigation/native';
+import { useAuth } from '../../hooks/auth';
+
+
 import { Button } from '../../components/Forms/Button';
 
 import { CategorySelectButton } from '../../components/Forms/CategorySelectButton';
@@ -41,11 +44,12 @@ const schema = Yup.object().shape({
 });
 
 export function Register() {
-
-  const dataKey = '@gofinances:transactions';
-
   const [transactionType, setTransactionType] = useState('');
   const [categoryModalOpen, setCategoryModalOpen] = useState(false);
+
+  const { user } = useAuth();
+
+  const dataKey = `@gofinances:transactions_user:${user.id}`;
 
   const [category, setCategory] = useState({
     key: 'category',
