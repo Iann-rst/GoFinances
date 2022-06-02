@@ -54,10 +54,15 @@ export function Dashboard() {
   //Função para pegar o dia da ultima transação de entrada e saída
   function getLastTransactionDate(collection: DataListProps[], type: 'positive' | 'negative') {
 
+    const collectionFiltered = collection.filter(transaction => transaction.type === type);
+
+    if (collectionFiltered.length === 0) {
+      return '0';
+    }
+
     const lastTransaction = new Date(
-      Math.max.apply(Math, collection
-        .filter(transaction => transaction.type === type)
-        .map(transaction => new Date(transaction.date).getTime())))
+      Math.max.apply(Math, collectionFiltered
+        .map(transaction => new Date(transaction.date).getTime())));
 
     return `${lastTransaction.getDate()} de ${lastTransaction.toLocaleString('pt-BR', { month: 'long' })}`;
   }
@@ -111,7 +116,7 @@ export function Dashboard() {
     const lastTransactionExpensives = getLastTransactionDate(transactions, 'negative');
 
     //Intervalo do primeiro dia do mês ate a ultima transação
-    const totalInterval = `01 a ${lastTransactionExpensives}`
+    const totalInterval = lastTransactionExpensives === '0' ? 'Não há transações' : `01 a ${lastTransactionExpensives}`
 
     //Valor total = valor total de entradas - valor total de saídas
     const total = entriesTotal - expensiveTotal;
@@ -123,7 +128,7 @@ export function Dashboard() {
           style: 'currency',
           currency: 'BRL',
         }),
-        lastTransaction: `Última entrada dia ${lastTransactionEntries}`
+        lastTransaction: lastTransactionEntries === '0' ? 'Não há transações' : `Última entrada dia ${lastTransactionEntries}`
       },
 
       expensives: {
@@ -131,7 +136,7 @@ export function Dashboard() {
           style: 'currency',
           currency: 'BRL'
         }),
-        lastTransaction: `Última saída dia ${lastTransactionExpensives}`
+        lastTransaction: lastTransactionExpensives === '0' ? 'Não há transações' : `Última saída dia ${lastTransactionExpensives}`
       },
 
       total: {
