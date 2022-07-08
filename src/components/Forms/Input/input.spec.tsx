@@ -20,7 +20,7 @@ describe('Input Component', () => {
         placeholder="E-mail"
         keyboardType="email-address"
         autoCorrect={false}
-        active={false}
+        active={true}
       />,
       {
         wrapper: Providers
