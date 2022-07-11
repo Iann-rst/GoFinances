@@ -74,9 +74,7 @@ export function Register() {
   }
 
   function handleOpenSelectCategoryModal() {
-    setTimeout(() => {
-      setCategoryModalOpen(true);
-    }, 1000);
+    setCategoryModalOpen(true);
   }
 
   //Dados do formulário
