@@ -15,7 +15,7 @@ const Providers: React.FC = ({ children }) => (
 
 describe('Input Component', () => {
   it('must have specific border color when active', () => {
-    const { getByTestId, debug } = render(
+    const { getByTestId } = render(
       <Input testID="input-email"
         placeholder="E-mail"
         keyboardType="email-address"
@@ -27,7 +27,6 @@ describe('Input Component', () => {
       }
     );
 
-    debug();
 
     const inputComponent = getByTestId('input-email');
     expect(inputComponent.props.style[0].borderColor).toEqual(theme.colors.attention);
