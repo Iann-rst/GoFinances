@@ -66,7 +66,7 @@ function AuthProvider({ children }: AuthProviderProps) {
         //salvando no async-storage
         await AsyncStorage.setItem(userStorageKey, JSON.stringify(userLogged));
       }
-    } catch (error) {
+    } catch (error: any) {
       throw new Error(error);
     }
   }
@@ -83,13 +83,13 @@ function AuthProvider({ children }: AuthProviderProps) {
       if (credential) {
         const userLogged = {
           id: String(credential.user),
-          email: credential.email,
+          email: credential.email!,
           name: credential.fullName!.givenName!,
           photo: undefined
         };
         setUser(userLogged);
       }
-    } catch (error) {
+    } catch (error: any) {
       throw new Error(error);
     }
   }
