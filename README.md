@@ -5,6 +5,7 @@
 
 ## 📌 Sobre
   GoFinances é um aplicativo de controle de gastos pessoais do usuário.
+  
   Aplicação desenvolvida durante o curso Ignite da trilha React Native da [Rocketseat](https://www.rocketseat.com.br/index).
 
 ## ⚒ Tecnologias e Funcionalidades
