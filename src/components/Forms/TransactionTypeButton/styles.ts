@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components/native';
 import { TouchableOpacity } from 'react-native';
-import { FontAwesome5 } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 import { RFValue } from 'react-native-responsive-fontsize';
 
 interface IconProps {
@@ -36,7 +36,7 @@ export const Container = styled(TouchableOpacity) <ContainerProps>`
   `}
 `;
 
-export const Icon = styled(FontAwesome5) <IconProps>`
+export const Icon = styled(Feather) <IconProps>`
   font-size: ${RFValue(24)}px;
   margin-right: 12px;
 

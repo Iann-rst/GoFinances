@@ -18,8 +18,8 @@ interface ICard {
 }
 
 const icon = {
-  up: 'arrow-alt-circle-up',
-  down: 'arrow-alt-circle-down',
+  up: 'arrow-up-circle',
+  down: 'arrow-down-circle',
   total: 'dollar-sign'
 }
 

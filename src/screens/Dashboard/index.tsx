@@ -186,7 +186,7 @@ export function Dashboard() {
                   </User>
                 </UserInfo>
                 <LogoutButton onPress={signOut}>
-                  <Icon name="power-off" />
+                  <Icon name="power" />
                 </LogoutButton>
               </UserWrapper>
             </Header>

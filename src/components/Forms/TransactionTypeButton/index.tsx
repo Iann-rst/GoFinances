@@ -5,8 +5,8 @@ import { Container, Icon, Title } from './styles';
 //Componente do tipo da transação (Income ou Outcome)
 
 const icons = {
-  up: 'arrow-alt-circle-up',
-  down: 'arrow-alt-circle-down'
+  up: 'arrow-up-circle',
+  down: 'arrow-down-circle'
 }
 
 interface Props extends TouchableOpacityProps {

@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
 import { FlatList, FlatListProps, TouchableOpacity } from 'react-native';
-import { FontAwesome5 } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
 import { getBottomSpace, getStatusBarHeight } from 'react-native-iphone-x-helper';
 import { DataListProps } from '.';
@@ -62,7 +62,7 @@ export const UserName = styled.Text`
   font-size: ${RFValue(18)}px;
 `;
 
-export const Icon = styled(FontAwesome5)`
+export const Icon = styled(Feather)`
  color: ${({ theme }) => theme.colors.secondary};
  font-size: ${RFValue(24)}px;
 `;
