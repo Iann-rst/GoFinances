@@ -72,27 +72,26 @@ function AuthProvider({ children }: AuthProviderProps) {
   }
 
   async function signInWithApple() {
-    console.log("SignInWithApple");
-    // try {
-    //   const credential = await AppleAuthentication.signInAsync({
-    //     requestedScopes: [
-    //       AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
-    //       AppleAuthentication.AppleAuthenticationScope.EMAIL,
-    //     ]
-    //   });
-    //   console.log(credential);
-    //   if (credential) {
-    //     const userLogged = {
-    //       id: String(credential.user),
-    //       email: credential.email,
-    //       name: credential.fullName!.givenName!,
-    //       photo: undefined
-    //     };
-    //     setUser(userLogged);
-    //   }
-    // } catch (error) {
-    //   throw new Error(error);
-    // }
+    try {
+      const credential = await AppleAuthentication.signInAsync({
+        requestedScopes: [
+          AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
+          AppleAuthentication.AppleAuthenticationScope.EMAIL,
+        ]
+      });
+      console.log(credential);
+      if (credential) {
+        const userLogged = {
+          id: String(credential.user),
+          email: credential.email,
+          name: credential.fullName!.givenName!,
+          photo: undefined
+        };
+        setUser(userLogged);
+      }
+    } catch (error) {
+      throw new Error(error);
+    }
   }
 
   async function signOut() {
