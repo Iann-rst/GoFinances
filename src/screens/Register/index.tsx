@@ -49,14 +49,12 @@ export function Register() {
 
   const { user } = useAuth();
 
-  const dataKey = `@gofinances:transactions_user:${user.id}`;
-
   const [category, setCategory] = useState({
     key: 'category',
     name: 'Categoria'
   });
 
-  const { navigate }: NavigationProp<ParamListBase> = useNavigation();
+  // const { navigate }: NavigationProp<ParamListBase> = useNavigation();
 
   const {
     control,
@@ -101,6 +99,7 @@ export function Register() {
     *dataKey = @gofinances:transactions
     */
     try {
+      const dataKey = `@gofinances:transactions_user:${user.id}`;
       const data = await AsyncStorage.getItem(dataKey);
       const currentData = data ? JSON.parse(data) : [];
 
@@ -120,7 +119,7 @@ export function Register() {
       });
 
       //Depois volta para a screen Dashboard
-      navigate('Listagem');
+      // navigate('Listagem');
 
     } catch (error) {
       console.log(error);
@@ -169,6 +168,7 @@ export function Register() {
             </TransactionType>
 
             <CategorySelectButton
+              testID="button-category"
               title={category.name}
               onPress={handleOpenSelectCategoryModal}
             />
@@ -180,7 +180,7 @@ export function Register() {
             onPress={handleSubmit(handleRegister)} />
         </Form >
 
-        <Modal visible={categoryModalOpen}>
+        <Modal testID="modal-category" visible={categoryModalOpen}>
           <CategorySelect
             category={category}
             setCategory={setCategory}
