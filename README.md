@@ -19,6 +19,11 @@
 
 ## Layout da aplicação
   O Layout da aplicação está no [figma](https://www.figma.com/file/zzcgFJB3SNQTQBcGjhuOei/GoFinances-Ignite?node-id=0%3A1).
+  
+## :camera: Screenshot
+https://user-images.githubusercontent.com/48128325/194098327-ca444d64-c8cf-4a33-b219-b282327610bb.mp4
+
+
 
 ## :rocket: Como executar
 Faça o clone do projeto
